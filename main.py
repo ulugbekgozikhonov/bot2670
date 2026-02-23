@@ -5,12 +5,17 @@ import logging
 from state import RegisterState
 from database import create_table, insert_user, get_user
 
+from aiogram.client.session.aiohttp import AiohttpSession
 
 logging.basicConfig(level=logging.INFO)
 
+PROXY_URL = 'http://proxy.server:3128'
 BOT_TOKEN = "8090071919:AAFfkerj0nWL-i9l_J_so4rM8F390EyBKsc"
 
-bot = Bot(token=BOT_TOKEN)
+session = AiohttpSession(proxy=PROXY_URL)
+bot = Bot(token=BOT_TOKEN, session=session)
+
+
 
 dp = Dispatcher()
 
